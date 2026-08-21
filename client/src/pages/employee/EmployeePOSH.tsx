@@ -65,7 +65,7 @@ const EmployeePOSH: React.FC = () => {
       }
 
       const res = await api.post('/posh/submit', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+        headers: { 'Content-Type': undefined }
       });
 
       if (res.data.success) {
@@ -76,6 +76,9 @@ const EmployeePOSH: React.FC = () => {
           showToast('Complaint submitted successfully. Rest assured, your matter is handled with extreme confidentiality.', 'success');
         }
         reset();
+        if (fileInput) {
+          fileInput.value = '';
+        }
         setShowForm(false);
         fetchComplaints();
       }

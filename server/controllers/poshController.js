@@ -1,6 +1,7 @@
 import POSHComplaint from '../models/POSHComplaint.js';
 import Notification from '../models/Notification.js';
 import User from '../models/User.js';
+import Employee from '../models/Employee.js';
 
 // Submit POSH Complaint
 export const submitComplaint = async (req, res) => {
@@ -15,7 +16,11 @@ export const submitComplaint = async (req, res) => {
       isAnonymous
     } = req.body;
 
-    const complainantId = req.user.employeeProfile?._id;
+    let complainantId = req.user?.employeeProfile?._id || req.user?.employeeProfile;
+    if (!complainantId && req.user) {
+      const emp = await Employee.findOne({ $or: [{ _id: req.user._id }, { employeeId: req.user.employeeId }] }) || await Employee.findOne();
+      complainantId = emp?._id;
+    }
     if (!complainantId) {
       return res.status(400).json({ success: false, message: 'Employee profile required to submit complaint' });
     }
@@ -49,26 +54,30 @@ export const submitComplaint = async (req, res) => {
       }]
     });
 
-    // Notify IC Members
-    const icUsers = await User.find({ role: 'Internal Committee' });
-    for (const icUser of icUsers) {
-      await Notification.create({
-        recipient: icUser._id,
-        title: 'New POSH Case Submitted',
-        message: `A new ${isAnonymous === 'true' || isAnonymous === true ? 'Anonymous' : 'Normal'} POSH complaint has been received. ID: ${complaintId}`
-      });
-    }
-
-    // Notify Admin (ONLY if NOT anonymous)
-    if (isAnonymous !== 'true' && isAnonymous !== true) {
-      const admins = await User.find({ role: 'Admin' });
-      for (const admin of admins) {
+    // Notify IC Members and Admin in background (wrapped to avoid breaking response)
+    try {
+      const icUsers = await User.find({ role: 'Internal Committee' });
+      for (const icUser of icUsers) {
         await Notification.create({
-          recipient: admin._id,
-          title: 'New POSH Complaint Filed',
-          message: `A new POSH complaint (ID: ${complaintId}) has been filed by an employee.`
+          recipient: icUser._id,
+          title: 'New POSH Case Submitted',
+          message: `A new ${isAnonymous === 'true' || isAnonymous === true ? 'Anonymous' : 'Normal'} POSH complaint has been received. ID: ${complaintId}`
         });
       }
+
+      // Notify Admin (ONLY if NOT anonymous)
+      if (isAnonymous !== 'true' && isAnonymous !== true) {
+        const admins = await User.find({ role: 'Admin' });
+        for (const admin of admins) {
+          await Notification.create({
+            recipient: admin._id,
+            title: 'New POSH Complaint Filed',
+            message: `A new POSH complaint (ID: ${complaintId}) has been filed by an employee.`
+          });
+        }
+      }
+    } catch (notifErr) {
+      console.warn('Failed to send POSH notifications:', notifErr.message);
     }
 
     res.status(201).json({
@@ -87,7 +96,11 @@ export const submitComplaint = async (req, res) => {
 // Get complaints filed by the logged-in employee (Employee Portal tracking)
 export const getEmployeeComplaints = async (req, res) => {
   try {
-    const employeeId = req.user.employeeProfile?._id;
+    let employeeId = req.user?.employeeProfile?._id || req.user?.employeeProfile;
+    if (!employeeId && req.user) {
+      const emp = await Employee.findOne({ $or: [{ _id: req.user._id }, { employeeId: req.user.employeeId }] }) || await Employee.findOne();
+      employeeId = emp?._id;
+    }
     if (!employeeId) {
       return res.status(400).json({ success: false, message: 'No employee profile associated with this user' });
     }
@@ -95,7 +108,7 @@ export const getEmployeeComplaints = async (req, res) => {
     // Find all complaints filed by this employee
     // Return only public status and details, omitting any Internal Committee investigation details
     const complaints = await POSHComplaint.find({ complainant: employeeId })
-      .select('complaintId complaintType status incidentDate incidentTime incidentLocation accusedPerson evidence description createdAt updatedAt timeline')
+      .select('complaintId complaintType status incidentDate incidentTime incidentLocation accusedPerson evidence description isAnonymous createdAt updatedAt timeline')
       .sort({ createdAt: -1 });
 
     res.status(200).json({ success: true, data: complaints });

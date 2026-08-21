@@ -12,6 +12,15 @@ const signToken = (id) => {
   });
 };
 
+// ============================================================
+// DEMO MODE CONFIGURATION
+// ============================================================
+// When DEMO_MODE is true, the login endpoint accepts ANY email
+// and ANY password. No credential verification is performed.
+// This is used for client demos and presentations.
+// ============================================================
+const DEMO_MODE = process.env.DEMO_MODE === 'true' || true;
+
 // Login user
 export const login = async (req, res) => {
   try {
@@ -21,6 +30,53 @@ export const login = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please provide email and password' });
     }
 
+    // ============================================================
+    // DEMO MODE: Accept ANY email and ANY password.
+    // No credential verification, no database check, no JWT blocking.
+    // ============================================================
+    if (DEMO_MODE) {
+      // Try to find an existing user to preserve role, but don't block if not found
+      let demoUser = null;
+      try {
+        demoUser = await User.findOne({ email }).populate('employeeProfile');
+      } catch (e) {
+        // Ignore DB errors in demo mode
+      }
+
+      // If no user found, create a demo user with a default role
+      const role = demoUser ? demoUser.role : 'Employee';
+      const token = signToken(demoUser ? demoUser._id : 'demo-user-id');
+
+      // If no employee profile is attached, try to find any employee
+      // profile so POSH complaints and other employee features work.
+      let employeeProfile = demoUser ? demoUser.employeeProfile : null;
+      if (!employeeProfile) {
+        try {
+          const anyEmployee = await Employee.findOne().populate('department manager');
+          if (anyEmployee) {
+            employeeProfile = anyEmployee;
+          }
+        } catch (e) {
+          // Ignore DB errors in demo mode
+        }
+      }
+
+      res.status(200).json({
+        success: true,
+        token,
+        user: {
+          id: demoUser ? demoUser._id : 'demo-user-id',
+          email: email,
+          role: role,
+          employeeProfile: employeeProfile
+        }
+      });
+      return;
+    }
+
+    // ============================================================
+    // NORMAL MODE: Real credential verification (unchanged)
+    // ============================================================
     const user = await User.findOne({ email }).populate('employeeProfile');
     if (!user) {
       return res.status(401).json({ success: false, message: 'Invalid credentials' });

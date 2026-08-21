@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../context/AuthContext';
 import { useNotification } from '../../context/NotificationContext';
-import { ShieldCheck, Mail, Lock, Eye, EyeOff, Building, UserCheck, Calendar, DollarSign, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Mail, Lock, Eye, EyeOff, Building, UserCheck, Calendar, DollarSign, ArrowRight, UserCog, Users, Shield, User } from 'lucide-react';
 import { PremiumButton } from '../../components/common/UI';
+import { UserRole } from '../../types';
 
 const Login: React.FC = () => {
   const { login } = useAuth();
@@ -13,6 +14,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [submitLoading, setSubmitLoading] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<UserRole>('Employee');
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     defaultValues: {
@@ -24,17 +26,15 @@ const Login: React.FC = () => {
   const onSubmit = async (data: any) => {
     setSubmitLoading(true);
     try {
-      await login(data.email, data.password);
+      // Pass the selected role to the login function
+      await login(data.email, data.password, selectedRole);
       showToast('Login successful! Redirecting...', 'success');
       
-      const storedUser = localStorage.getItem('user');
-      if (storedUser) {
-        const user = JSON.parse(storedUser);
-        if (user.role === 'Employee') navigate('/employee/dashboard');
-        else if (user.role === 'Admin') navigate('/admin/dashboard');
-        else if (user.role === 'Super Admin') navigate('/superadmin/dashboard');
-        else if (user.role === 'Internal Committee') navigate('/ic/dashboard');
-      }
+      // Navigate to the correct dashboard based on the selected role
+      if (selectedRole === 'Employee') navigate('/employee/dashboard');
+      else if (selectedRole === 'Admin') navigate('/admin/dashboard');
+      else if (selectedRole === 'Super Admin') navigate('/superadmin/dashboard');
+      else if (selectedRole === 'Internal Committee') navigate('/ic/dashboard');
     } catch (err: any) {
       showToast(err.message || 'Invalid email or password', 'error');
     } finally {
@@ -46,17 +46,28 @@ const Login: React.FC = () => {
     if (role === 'employee') {
       setValue('email', 'employee@hrms.com');
       setValue('password', 'password');
+      setSelectedRole('Employee');
     } else if (role === 'admin') {
       setValue('email', 'admin@hrms.com');
       setValue('password', 'password');
+      setSelectedRole('Admin');
     } else if (role === 'superadmin') {
       setValue('email', 'superadmin@hrms.com');
       setValue('password', 'password');
+      setSelectedRole('Super Admin');
     } else if (role === 'ic') {
       setValue('email', 'ic@hrms.com');
       setValue('password', 'password');
+      setSelectedRole('Internal Committee');
     }
   };
+
+  const roleOptions: { role: UserRole; label: string; icon: React.ReactNode; desc: string }[] = [
+    { role: 'Employee', label: 'Employee', icon: <User size={14} />, desc: 'Self-service portal' },
+    { role: 'Admin', label: 'Admin', icon: <Users size={14} />, desc: 'HR management' },
+    { role: 'Super Admin', label: 'Super Admin', icon: <UserCog size={14} />, desc: 'System control' },
+    { role: 'Internal Committee', label: 'IC Committee', icon: <Shield size={14} />, desc: 'POSH cases' }
+  ];
 
   return (
     <div className="min-h-screen flex bg-slate-50 dark:bg-slate-950 overflow-hidden select-none">
@@ -226,6 +237,33 @@ const Login: React.FC = () => {
                 </div>
                 {errors.password && <span className="text-rose-500 text-[10px] font-bold mt-1 block">{errors.password.message}</span>}
               </div>
+
+              {/* Role Selection */}
+              <div>
+                <label className="text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-1.5">Select Portal / Role</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {roleOptions.map((opt) => (
+                    <button
+                      key={opt.role}
+                      type="button"
+                      onClick={() => setSelectedRole(opt.role)}
+                      className={`px-3 py-2.5 rounded-xl border text-left transition-all cursor-pointer ${
+                        selectedRole === opt.role
+                          ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-500/20'
+                          : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-indigo-300'
+                      }`}
+                    >
+                      <span className="flex items-center gap-1.5 text-[10px] font-black">
+                        {opt.icon}
+                        {opt.label}
+                      </span>
+                      <span className={`block text-[9px] font-semibold mt-0.5 ${selectedRole === opt.role ? 'text-white/70' : 'text-slate-400'}`}>
+                        {opt.desc}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="flex justify-between items-center text-[10px] font-bold">
@@ -246,7 +284,7 @@ const Login: React.FC = () => {
                 <div className="h-4.5 w-4.5 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
               ) : (
                 <span className="flex items-center gap-1.5 justify-center">
-                  Sign In <ArrowRight size={14} />
+                  Sign In as {selectedRole} <ArrowRight size={14} />
                 </span>
               )}
             </PremiumButton>
