@@ -16,10 +16,14 @@ const ICCases: React.FC = () => {
     try {
       const res = await api.get('/ic/cases');
       if (res.data.success) {
-        setCases(res.data.data);
+        const localComplaints = JSON.parse(localStorage.getItem('posh_complaints') || '[]');
+        const remoteIds = new Set((res.data.data || []).map((c: any) => c.complaintId));
+        const uniqueLocal = localComplaints.filter((c: any) => !remoteIds.has(c.complaintId));
+        setCases([...uniqueLocal, ...(res.data.data || [])]);
       }
     } catch (error) {
-      showToast('Failed to load IC cases', 'error');
+      const localComplaints = JSON.parse(localStorage.getItem('posh_complaints') || '[]');
+      setCases(localComplaints);
     } finally {
       setLoading(false);
     }

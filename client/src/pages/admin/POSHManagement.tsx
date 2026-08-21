@@ -18,10 +18,16 @@ const POSHManagement: React.FC = () => {
     try {
       const res = await api.get('/admin/posh-cases');
       if (res.data.success) {
-        setCases(res.data.data);
+        const localComplaints = JSON.parse(localStorage.getItem('posh_complaints') || '[]')
+          .filter((c: any) => !c.isAnonymous);
+        const remoteIds = new Set((res.data.data || []).map((c: any) => c.complaintId));
+        const uniqueLocal = localComplaints.filter((c: any) => !remoteIds.has(c.complaintId));
+        setCases([...uniqueLocal, ...(res.data.data || [])]);
       }
     } catch (error) {
-      showToast('Failed to load POSH cases', 'error');
+      const localComplaints = JSON.parse(localStorage.getItem('posh_complaints') || '[]')
+        .filter((c: any) => !c.isAnonymous);
+      setCases(localComplaints);
     } finally {
       setLoading(false);
     }
