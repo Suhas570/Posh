@@ -1,0 +1,18 @@
+[
+  {
+    "id": "ann-tjxqr6n",
+    "title": "meeting",
+    "text": "meeting",
+    "target": "STUDENTS",
+    "status": "ACTIVE",
+    "date": "2026-07-19"
+  },
+  {
+    "id": "ann-1",
+    "title": "System Maintenance Scheduled",
+    "text": "Server upgrade on Saturday 2:00 AM UTC.",
+    "date": "2026-07-18",
+    "target": "ALL",
+    "status": "ACTIVE"
+  }
+]

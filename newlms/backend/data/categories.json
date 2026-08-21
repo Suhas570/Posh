@@ -1,0 +1,22 @@
+[
+  {
+    "id": "cat-1",
+    "name": "Development"
+  },
+  {
+    "id": "cat-2",
+    "name": "Design"
+  },
+  {
+    "id": "cat-3",
+    "name": "Business"
+  },
+  {
+    "id": "cat-4",
+    "name": "Marketing"
+  },
+  {
+    "id": "cat-5",
+    "name": "Academics"
+  }
+]

@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+@theme {
+  --color-indigo-50: #fffdfb;
+  --color-indigo-100: #ffebd3;
+  --color-indigo-200: #ffd3cb;
+  --color-indigo-300: #ffbeaf;
+  --color-indigo-400: #ffb6a6;
+  --color-indigo-500: #67a2c5;
+  --color-indigo-600: #67a2c5;
+  --color-indigo-700: #558db0;
+  --color-indigo-800: #42789c;
+  --color-indigo-900: #316287;
+  --color-indigo-950: #214d71;
+
+  --color-purple-50: #fff6f5;
+  --color-purple-100: #ffebe7;
+  --color-purple-200: #ffd3cb;
+  --color-purple-300: #ffbeaf;
+  --color-purple-400: #ffb6a6;
+  --color-purple-500: #ffb6a6;
+  --color-purple-600: #e07a65;
+  --color-purple-700: #b85f4e;
+  --color-purple-800: #8f4638;
+  --color-purple-900: #662d22;
+  --color-purple-950: #3d150e;
+
+  --color-cyan-50: #f3faf8;
+  --color-cyan-100: #e6f5f1;
+  --color-cyan-200: #cdede4;
+  --color-cyan-300: #b4e3d7;
+  --color-cyan-400: #9bcec1;
+  --color-cyan-500: #9bcec1;
+  --color-cyan-600: #7db3a6;
+  --color-cyan-700: #61968a;
+  --color-cyan-800: #477a6f;
+  --color-cyan-900: #2e5d54;
+  --color-cyan-950: #173e37;
+
+  --color-blue-50: #f0f7fa;
+  --color-blue-100: #dbeef6;
+  --color-blue-200: #bce0f2;
+  --color-blue-300: #9ac6e4;
+  --color-blue-400: #7bb2d4;
+  --color-blue-500: #67a2c5;
+  --color-blue-600: #558db0;
+  --color-blue-700: #42789c;
+  --color-blue-800: #316287;
+  --color-blue-900: #214d71;
+  --color-blue-950: #123653;
+
+  /* Premium Warm Gray Theme (replaces neutral gray-50/100/200 with warm cream/peach) */
+  --color-gray-50: #fffbf6;
+  --color-gray-100: #ffebd3;
+  --color-gray-200: #fce4db;
+  --color-gray-300: #ffbeaf;
+  --color-brand-primary: #5B4CFF;
+  --color-brand-secondary: #7C6BFF;
+  --color-brand-accent: #8B5CF6;
+  --color-brand-bg: #F8FAFC;
+  --color-brand-dark: #0F172A;
+  --color-brand-success: #22C55E;
+  --color-brand-danger: #EF4444;
+  --color-brand-warning: #F59E0B;
+
+  /* Override standard indigo scale with custom Primary & Secondary */
+  --color-indigo-50: #f5f4ff;
+  --color-indigo-100: #ebe8ff;
+  --color-indigo-200: #d6d1ff;
+  --color-indigo-300: #b5abff;
+  --color-indigo-400: #9180ff;
+  --color-indigo-500: #7c6bff; /* Secondary */
+  --color-indigo-600: #5b4cff; /* Primary */
+  --color-indigo-700: #493cd9;
+  --color-indigo-800: #3b30b3;
+  --color-indigo-900: #0f172a;
+  --color-indigo-950: #020617;
+
+  /* Override standard purple & violet with custom Accent */
+  --color-purple-50: #fbf7ff;
+  --color-purple-100: #f6edff;
+  --color-purple-200: #eedaff;
+  --color-purple-300: #ddbaff;
+  --color-purple-400: #c68fff;
+  --color-purple-500: #ae5cff;
+  --color-purple-600: #8b5cf6; /* Accent */
+  --color-purple-700: #783cef;
+  --color-purple-800: #622ad3;
+  --color-purple-900: #5021ad;
+  --color-purple-950: #0f0426;
+
+  --color-violet-50: #fbf7ff;
+  --color-violet-100: #f6edff;
+  --color-violet-200: #eedaff;
+  --color-violet-300: #ddbaff;
+  --color-violet-400: #c68fff;
+  --color-violet-500: #ae5cff;
+  --color-violet-600: #8b5cf6; /* Accent */
+  --color-violet-700: #783cef;
+  --color-violet-800: #622ad3;
+  --color-violet-900: #5021ad;
+  --color-violet-950: #0f0426;
+
+  /* Override slate and gray to map to standard background and dark */
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+  --color-slate-950: #020617;
+
+  --color-gray-50: #F8FAFC;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-300: #cbd5e1;
+  --color-gray-400: #94a3b8;
+  --color-gray-500: #64748b;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1E293B;
+  --color-gray-900: #0F172A;
+  --color-gray-950: #020617;
+}
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply bg-slate-50 text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-700 transition-colors duration-300;
+  }
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.25);
+  border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.45);
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.7);
+}
+
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+/* Premium gradient elements */
+.gradient-primary-bg {
+  background: linear-gradient(135deg, #5B4CFF 0%, #7C6BFF 100%);
+}
+
+.saas-dot-grid {
+  background-image: radial-gradient(rgba(91, 76, 255, 0.05) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.dark .saas-dot-grid {
+  background-image: radial-gradient(rgba(141, 92, 246, 0.05) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Smooth active pill animations */
+.nav-pill-glow {
+  box-shadow: 0 0 15px rgba(91, 76, 255, 0.15);
+}

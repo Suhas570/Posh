@@ -1,0 +1,426 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+type PdfFile {
+  name String
+  size String
+  url  String?
+}
+
+type PptFile {
+  name String
+  size String
+  url  String?
+}
+
+type DocFile {
+  name String
+  size String
+  url  String?
+}
+
+type ZipFile {
+  name String
+  size String
+  url  String?
+}
+
+type Resource {
+  id          String
+  title       String
+  url         String
+  type        String
+  description String?
+}
+
+type Lesson {
+  id            String
+  title         String
+  videoUrl      String?
+  videoType     String?
+  videoDuration String?
+  description   String?
+  pdfFile       PdfFile?
+  pptFile       PptFile?
+  docFile       DocFile?
+  zipFile       ZipFile?
+  resources     Resource[]
+}
+
+type Module {
+  id      String
+  title   String
+  lessons Lesson[]
+}
+
+model Course {
+  id          String   @id @default(uuid()) @map("_id")
+  title       String?
+  description String?
+  category    String?
+  coverImage  String?
+  instructor  String?
+  duration    String?
+  level       String?
+  language    String?
+  status      String?  @default("Draft")
+  createdAt   DateTime? @default(now())
+  curriculum  Module[]
+}
+
+type ThreadItem {
+  sender String
+  text   String
+  time   String
+}
+
+model Message {
+  id        String       @id @default(uuid()) @map("_id")
+  sender    String
+  recipient String?
+  subject   String
+  preview   String
+  date      String
+  unread    Boolean      @default(true)
+  folder    String       @default("Inbox")
+  thread    ThreadItem[]
+}
+
+model Activity {
+  id       String  @id @default(uuid()) @map("_id")
+  type     String
+  text     String
+  time     String
+  courseId String?
+}
+
+model Review {
+  id          String  @id @default(uuid()) @map("_id")
+  courseId    String
+  courseTitle String
+  studentName String
+  rating      Int
+  comment     String
+  date        String
+  reply       String  @default("")
+}
+
+model Announcement {
+  id          String   @id @default(uuid()) @map("_id")
+  title       String
+  content     String
+  target      String
+  courseId    String?
+  courseTitle String?
+  date        String
+  files       String[]
+}
+
+model CalendarEvent {
+  id    String @id @default(uuid()) @map("_id")
+  title String
+  date  String
+  type  String
+  time  String
+}
+
+type QuestionOption {
+  id   String
+  text String
+}
+
+type VoiceQuestion {
+  id            String
+  text          String
+  options       String[]
+  correctAnswer String
+  marks         Int      @default(1)
+}
+
+model VoiceAssignment {
+  id          String          @id @default(uuid()) @map("_id")
+  title       String
+  description String?
+  status      String?         @default("Published")
+  tutorId     String?         @default("tutor-1")
+  tutorName   String?         @default("Tutor Manoj")
+  duration    Int?            @default(15)
+  totalMarks  Int             @default(0)
+  createdAt   DateTime        @default(now())
+  questions   VoiceQuestion[]
+}
+
+type StudentAnswerItem {
+  questionId     String
+  questionText   String
+  selectedAnswer String
+  correctAnswer  String
+  isCorrect      Boolean
+  marksObtained  Int
+  totalMarks     Int
+}
+
+model VoiceAssignmentSubmission {
+  id              String              @id @default(uuid()) @map("_id")
+  assignmentId    String
+  assignmentTitle String
+  studentId       String              @default("student-1")
+  studentName     String              @default("Manoj")
+  tutorId         String?             @default("tutor-1")
+  studentAnswers  StudentAnswerItem[]
+  finalScore      Int
+  totalMarks      Int
+  percentage      Float
+  submittedAt     DateTime            @default(now())
+  status          String              @default("Completed")
+}
+
+model User {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  email          String         @unique
+  passwordHash   String
+  role           String         // "HR" | "CANDIDATE"
+  faceEncoding   String?        // JSON array of face encoding floats (128 values)
+  isActive       Boolean        @default(true)
+  attempts       ExamAttempt[]  @relation("CandidateAttempts")
+  results        ExamResult[]   @relation("CandidateResults")
+  certificates   Certificate[]  @relation("CandidateCertificates")
+  questions      Question[]     @relation("HRQuestions")
+  testAssignments TestAssignment[]
+  createdTests   Test[]         @relation("HRTests")
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model Question {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  text               String
+  type               String   @default("MCQ") // "MCQ" or "CODING"
+  options            String?  // Store as stringified JSON array
+  correctOptionIndex Int?
+  language           String?  // e.g. "javascript", "python"
+  starterCode        String?
+  testCases          String?  // Store as stringified JSON array
+  marks              Int      @default(1)
+  createdByHrId      String   @db.ObjectId
+  createdByHr        User     @relation("HRQuestions", fields: [createdByHrId], references: [id], onDelete: Cascade)
+  answers            Answer[]
+  testQuestions      TestQuestion[]
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Test {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String?
+  duration      Int      @default(60) // duration in minutes
+  passingMark   Int      @default(50) // passing percentage
+  createdByHrId String   @db.ObjectId
+  createdByHr   User     @relation("HRTests", fields: [createdByHrId], references: [id], onDelete: Cascade)
+  questions     TestQuestion[]
+  assignments   TestAssignment[]
+  attempts      ExamAttempt[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model TestQuestion {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  testId     String   @db.ObjectId
+  test       Test     @relation(fields: [testId], references: [id], onDelete: Cascade)
+  questionId String   @db.ObjectId
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([testId, questionId])
+}
+
+model TestAssignment {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  testId      String   @db.ObjectId
+  test        Test     @relation(fields: [testId], references: [id], onDelete: Cascade)
+  candidateId String   @db.ObjectId
+  candidate   User     @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+
+  @@unique([testId, candidateId])
+}
+
+model ExamAttempt {
+  id               String        @id @default(auto()) @map("_id") @db.ObjectId
+  candidateId      String        @db.ObjectId
+  candidate        User          @relation("CandidateAttempts", fields: [candidateId], references: [id], onDelete: Cascade)
+  testId           String?       @db.ObjectId
+  test             Test?         @relation(fields: [testId], references: [id], onDelete: Cascade)
+  startedAt        DateTime      @default(now())
+  submittedAt      DateTime?
+  status           String        @default("IN_PROGRESS") // "IN_PROGRESS" | "COMPLETED"
+  autoSubmitted    Boolean       @default(false)
+  autoSubmitReason String?
+  answers          Answer[]
+  result           ExamResult?
+  violations       ProctoringViolation[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+}
+
+model ProctoringViolation {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  attemptId   String      @db.ObjectId
+  attempt     ExamAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  type        String      // "FACE_NOT_DETECTED", "TAB_SWITCH", "LEFT_FULLSCREEN", "RIGHT_CLICK"
+  timestamp   DateTime    @default(now())
+}
+
+model Answer {
+  id                  String      @id @default(auto()) @map("_id") @db.ObjectId
+  attemptId           String      @db.ObjectId
+  attempt             ExamAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId          String      @db.ObjectId
+  question            Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  selectedOptionIndex Int?
+  codeSubmitted       String?
+  isCorrect           Boolean
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+
+  @@unique([attemptId, questionId])
+}
+
+model ExamResult {
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
+  attemptId   String      @unique @db.ObjectId
+  attempt     ExamAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  candidateId String      @db.ObjectId
+  candidate   User        @relation("CandidateResults", fields: [candidateId], references: [id], onDelete: Cascade)
+  scoredMarks Float
+  totalMarks  Int
+  percentage  Float
+  passFail    String      // "PASS" | "FAIL"
+  submittedAt DateTime    @default(now())
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  certificate Certificate?
+}
+
+// ===================== CERTIFICATE MODULE =====================
+
+// Running per-category counter used to build human readable, sequential
+// certificate IDs such as LMS-2026-JAVA-000001.
+model CertificateSequence {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  year      Int
+  category  String
+  lastValue Int      @default(0)
+  updatedAt DateTime @updatedAt
+
+  @@unique([year, category])
+}
+
+model Certificate {
+  id                   String    @id @default(auto()) @map("_id") @db.ObjectId
+
+  certificateId         String   @unique
+
+  candidateId            String   @db.ObjectId
+  candidate               User     @relation("CandidateCertificates", fields: [candidateId], references: [id], onDelete: Cascade)
+  courseId                String?
+  courseName               String
+  trainerId                String?  @db.ObjectId
+  trainerName                String
+
+  candidateName             String
+  organizationName            String   @default("NewLMS Academy")
+
+  examResultId                String?  @unique @db.ObjectId
+  examResult                   ExamResult? @relation(fields: [examResultId], references: [id], onDelete: SetNull)
+
+  grade                        String?
+  scorePercentage                Float?
+
+  completionDate                 DateTime
+  issueDate                       DateTime  @default(now())
+  serialNumber                     String   @unique
+  generatedTimestamp                DateTime @default(now())
+
+  fingerprint                        String
+  verificationUrl                      String
+  qrCodePayload                          String
+  barcodePayload                          String
+
+  status                                  String   @default("ACTIVE")
+  isTampered                               Boolean  @default(false)
+  tamperReason                              String?
+
+  pdfPath                                    String?
+  pdfFileName                                 String?
+
+  verificationCount                            Int      @default(0)
+  lastVerifiedAt                                DateTime?
+  downloadCount                                  Int      @default(0)
+  lastDownloadedAt                                DateTime?
+
+  createdBy                                       String   @default("SYSTEM")
+  createdAt                                        DateTime @default(now())
+  updatedAt                                         DateTime @updatedAt
+
+  verificationLogs                                   CertificateVerificationLog[]
+  downloadLogs                                        CertificateDownloadLog[]
+  auditLogs                                            CertificateAuditLog[]
+
+  @@index([candidateId])
+  @@index([courseId])
+  @@index([status])
+}
+
+model CertificateVerificationLog {
+  id             String      @id @default(auto()) @map("_id") @db.ObjectId
+  certificateId  String      @db.ObjectId
+  certificate    Certificate @relation(fields: [certificateId], references: [id], onDelete: Cascade)
+
+  requestedCertId String
+  result          String
+  reason          String?
+  ipAddress       String?
+  userAgent       String?
+  verifiedAt      DateTime   @default(now())
+
+  @@index([certificateId])
+  @@index([verifiedAt])
+}
+
+model CertificateDownloadLog {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  certificateId String      @db.ObjectId
+  certificate   Certificate @relation(fields: [certificateId], references: [id], onDelete: Cascade)
+
+  downloadedBy  String?     @db.ObjectId
+  ipAddress     String?
+  userAgent     String?
+  downloadedAt  DateTime    @default(now())
+
+  @@index([certificateId])
+}
+
+model CertificateAuditLog {
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  certificateId String      @db.ObjectId
+  certificate   Certificate @relation(fields: [certificateId], references: [id], onDelete: Cascade)
+
+  action        String
+  actor         String?
+  details       String?
+  createdAt     DateTime    @default(now())
+
+  @@index([certificateId])
+  @@index([action])
+}
+
+

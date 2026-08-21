@@ -1,0 +1,12 @@
+{
+  "name": "newlms-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend/home && npm install --prefix frontend/admin && npm install --prefix frontend/tutor && npm install --prefix frontend/student",
+    "dev": "concurrently -n BACKEND,HOME,ADMIN,TUTOR,STUDENT -c blue,green,magenta,yellow,cyan \"npm run dev --prefix backend\" \"npm run dev --prefix frontend/home\" \"npm run dev --prefix frontend/admin\" \"npm run dev --prefix frontend/tutor\" \"npm run dev --prefix frontend/student\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

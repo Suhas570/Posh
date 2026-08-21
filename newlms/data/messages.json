@@ -1,0 +1,64 @@
+[
+  {
+    "id": "msg-1",
+    "sender": "Dr. Manoj Kumar",
+    "role": "TUTOR",
+    "text": "Hello Admin, I submitted my Python course for review.",
+    "time": "10 mins ago"
+  },
+  {
+    "id": "msg-2",
+    "sender": "Super Admin",
+    "role": "ADMIN",
+    "text": "Great! I will inspect the curriculum and publish it.",
+    "time": "5 mins ago"
+  },
+  {
+    "id": "msg-1784461839745",
+    "sender": "Super Admin",
+    "role": "ADMIN",
+    "receiver": "Tutor",
+    "text": "hii",
+    "time": "Just now"
+  },
+  {
+    "id": "msg-1784461839752",
+    "sender": "Super Admin",
+    "role": "ADMIN",
+    "receiver": "Tutor",
+    "text": "hii",
+    "time": "Just now"
+  },
+  {
+    "id": "msg-1784461839756",
+    "sender": "Super Admin",
+    "role": "ADMIN",
+    "receiver": "Tutor",
+    "text": "hii",
+    "time": "Just now"
+  },
+  {
+    "id": "msg-1784462134746",
+    "sender": "Dr. Manoj Kumar",
+    "role": "TUTOR",
+    "receiver": "Super Admin",
+    "text": "hii",
+    "time": "Just now"
+  },
+  {
+    "id": "msg-1784462152426",
+    "sender": "Dr. Manoj Kumar",
+    "role": "TUTOR",
+    "receiver": "Super Admin",
+    "text": "helo admin",
+    "time": "Just now"
+  },
+  {
+    "id": "msg-1784462165349",
+    "sender": "Super Admin",
+    "role": "ADMIN",
+    "receiver": "Tutor",
+    "text": "hii tutot",
+    "time": "Just now"
+  }
+]

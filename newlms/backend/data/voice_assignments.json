@@ -1,0 +1,61 @@
+[
+  {
+    "id": "voice-assign-1",
+    "title": "Web Accessibility & Voice UI Quiz",
+    "description": "Test your knowledge on WAI-ARIA standards, WCAG 2.1 guidelines, and speech recognition systems.",
+    "status": "Published",
+    "tutorId": "tutor-1",
+    "tutorName": "Tutor Manoj",
+    "duration": 15,
+    "totalMarks": 20,
+    "createdAt": "2026-07-24T06:33:43.771Z",
+    "questions": [
+      {
+        "id": "q1",
+        "text": "What does WAI-ARIA stand for in web accessibility?",
+        "options": [
+          "Web Accessibility Initiative - Accessible Rich Internet Applications",
+          "Web Application Interface - Automated Rich Input Actions",
+          "Wide Access Integration - Accessible Responsive Interactive Apps",
+          "Web Audio Integration - Accessible Realtime Interaction Api"
+        ],
+        "correctAnswer": "Web Accessibility Initiative - Accessible Rich Internet Applications",
+        "marks": 5
+      },
+      {
+        "id": "q2",
+        "text": "Which HTML attribute provides text alternatives for screen readers when images cannot be displayed?",
+        "options": [
+          "title",
+          "alt",
+          "aria-label",
+          "description"
+        ],
+        "correctAnswer": "alt",
+        "marks": 5
+      },
+      {
+        "id": "q3",
+        "text": "Which Web API is used in modern browsers for Speech-to-Text Voice Recognition?",
+        "options": [
+          "SpeechSynthesis",
+          "SpeechRecognition",
+          "AudioContext",
+          "MediaStreamTrack"
+        ],
+        "correctAnswer": "SpeechRecognition",
+        "marks": 5
+      },
+      {
+        "id": "q4",
+        "text": "True or False: Accessible websites benefit visually impaired users as well as keyboard-only navigators.",
+        "options": [
+          "True",
+          "False"
+        ],
+        "correctAnswer": "True",
+        "marks": 5
+      }
+    ]
+  }
+]

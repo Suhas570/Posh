@@ -1,0 +1,38 @@
+[
+  {
+    "id": "usr-1",
+    "name": "Dr. Manoj Kumar",
+    "email": "manoj@lms.com",
+    "role": "TUTOR",
+    "status": "ACTIVE",
+    "joined": "2026-01-15",
+    "lastLogin": "10 mins ago"
+  },
+  {
+    "id": "usr-3",
+    "name": "Sophia Chen",
+    "email": "sophia@student.com",
+    "role": "STUDENT",
+    "status": "ACTIVE",
+    "joined": "2026-03-01",
+    "lastLogin": "1 day ago"
+  },
+  {
+    "id": "usr-4",
+    "name": "Prof. Alan Turing",
+    "email": "turing@tutor.com",
+    "role": "TUTOR",
+    "status": "ACTIVE",
+    "joined": "2026-01-20",
+    "lastLogin": "3 days ago"
+  },
+  {
+    "id": "usr-5",
+    "name": "Super Admin",
+    "email": "admin@lms.com",
+    "role": "ADMIN",
+    "status": "ACTIVE",
+    "joined": "2026-01-01",
+    "lastLogin": "Just now"
+  }
+]

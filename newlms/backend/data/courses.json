@@ -1,0 +1,546 @@
+[
+  {
+    "curriculum": [
+      {
+        "id": "mod-0z7623ig1",
+        "title": "baics",
+        "lessons": [
+          {
+            "id": "les-5rwk12x2b",
+            "title": "New Lesson",
+            "videoUrl": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+            "videoType": "YouTube",
+            "videoDuration": null,
+            "description": "basics",
+            "pdfFile": {
+              "name": "HRMS_Network_Based_Attendance_System_Documentation.pdf",
+              "size": "0.00 MB",
+              "url": "http://localhost:5000/uploads/pdf/HRMS_Network_Based_Attendance_System_Documentation.pdf"
+            },
+            "pptFile": {
+              "name": "LMS_Complete_System_Architecture_One_Page (1) (1).pptx",
+              "size": "0.00 MB",
+              "url": "http://localhost:5000/uploads/ppt/LMS_Complete_System_Architecture_One_Page%20(1)%20(1).pptx"
+            },
+            "docFile": {
+              "name": "AI_LMS_Formatted (1).docx",
+              "size": "0.02 MB",
+              "url": "http://localhost:5000/uploads/doc/AI_LMS_Formatted%20(1).docx"
+            },
+            "zipFile": {
+              "name": "Create App Based on Prompt.zip",
+              "size": "0.08 MB",
+              "url": "http://localhost:5000/uploads/zip/Create%20App%20Based%20on%20Prompt.zip"
+            },
+            "resources": []
+          }
+        ]
+      }
+    ],
+    "id": "course-64bnklt3o",
+    "title": "java",
+    "description": "ajava",
+    "category": "Development",
+    "coverImage": "https://tse4.mm.bing.net/th/id/OIP.7WvlHa_0StCkXoJjs-CRqgHaD-?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "instructor": "Manoj",
+    "duration": "24",
+    "level": "Beginner",
+    "language": "English",
+    "status": "Published",
+    "createdAt": "2026-07-20T05:31:09.444Z"
+  },
+  {
+    "curriculum": [
+      {
+        "id": "mod-6i6bjuagq",
+        "title": "baiscs",
+        "lessons": [
+          {
+            "id": "les-wlqojkeep",
+            "title": "sss",
+            "videoUrl": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+            "videoType": "YouTube",
+            "videoDuration": null,
+            "description": "sss",
+            "pdfFile": {
+              "name": "HRMS_Network_Based_Attendance_System_Documentation.pdf",
+              "size": "0.00 MB",
+              "url": "http://localhost:5000/uploads/pdf/HRMS_Network_Based_Attendance_System_Documentation.pdf"
+            },
+            "pptFile": {
+              "name": "LMS_Complete_System_Architecture_One_Page (1).pptx",
+              "size": "0.00 MB",
+              "url": "http://localhost:5000/uploads/ppt/LMS_Complete_System_Architecture_One_Page%20(1).pptx"
+            },
+            "docFile": {
+              "name": "AI_LMS_End_to_End_Content_Generation_Architecture (1).docx",
+              "size": "0.00 MB",
+              "url": "http://localhost:5000/uploads/doc/AI_LMS_End_to_End_Content_Generation_Architecture%20(1).docx"
+            },
+            "zipFile": {
+              "name": "Enterprise HRMS Employee Portal.zip",
+              "size": "0.04 MB",
+              "url": "http://localhost:5000/uploads/zip/Enterprise%20HRMS%20Employee%20Portal.zip"
+            },
+            "resources": []
+          }
+        ]
+      }
+    ],
+    "id": "course-z3ucz9fcv",
+    "title": "sss",
+    "description": "ssss",
+    "category": "Development",
+    "coverImage": "https://www.bing.com/images/search?view=detailV2&ccid=AEBCz5bQ&id=2B7EF9915FED9BEDAA1D343DCFF2BF9B50A0FC9B&thid=OIP.AEBCz5bQ___ol74QxJ-n3gHaHa&mediaurl=https%3a%2f%2farbit.com.br%2fwp-content%2fuploads%2f2023%2f05%2fCloud-Computing.png&exph=1080&expw=1080&q=azure&FORM=IRPRST&ck=BD1AF6A24FE718F5E9E786CE1D939D90&selectedIndex=1&itb=0",
+    "instructor": "Manoj",
+    "duration": "16",
+    "level": "Beginner",
+    "language": "English",
+    "status": "Published",
+    "createdAt": "2026-07-17T14:56:02.300Z"
+  },
+  {
+    "curriculum": [
+      {
+        "id": "mod-76i46g42z",
+        "title": "basics",
+        "lessons": [
+          {
+            "id": "les-bo7eiptfr",
+            "title": "synatx",
+            "videoUrl": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+            "videoType": "YouTube",
+            "videoDuration": null,
+            "description": "synatx",
+            "pdfFile": {
+              "name": "Manoj_LMS_Project_Overview_Architecture.pdf",
+              "size": "0.02 MB",
+              "url": "http://localhost:5000/uploads/pdf/Manoj_LMS_Project_Overview_Architecture.pdf"
+            },
+            "pptFile": {
+              "name": "LMS_Complete_System_Architecture_One_Page.pptx",
+              "size": "0.17 MB",
+              "url": "http://localhost:5000/uploads/ppt/LMS_Complete_System_Architecture_One_Page.pptx"
+            },
+            "docFile": {
+              "name": "AI_LMS_End_to_End_Content_Generation_Architecture.docx",
+              "size": "0.04 MB",
+              "url": "http://localhost:5000/uploads/doc/AI_LMS_End_to_End_Content_Generation_Architecture.docx"
+            },
+            "zipFile": {
+              "name": "Generate from existing file.zip",
+              "size": "0.08 MB",
+              "url": "http://localhost:5000/uploads/zip/Generate%20from%20existing%20file.zip"
+            },
+            "resources": []
+          }
+        ]
+      }
+    ],
+    "id": "course-ntoubz3df",
+    "title": "dadada",
+    "description": "answ",
+    "category": "Development",
+    "coverImage": "https://www.bing.com/images/search?view=detailV2&ccid=AEBCz5bQ&id=2B7EF9915FED9BEDAA1D343DCFF2BF9B50A0FC9B&thid=OIP.AEBCz5bQ___ol74QxJ-n3gHaHa&mediaurl=https%3a%2f%2farbit.com.br%2fwp-content%2fuploads%2f2023%2f05%2fCloud-Computing.png&exph=1080&expw=1080&q=azure&FORM=IRPRST&ck=BD1AF6A24FE718F5E9E786CE1D939D90&selectedIndex=1&itb=0",
+    "instructor": "Manoj",
+    "duration": "16",
+    "level": "Beginner",
+    "language": "English",
+    "status": "Published",
+    "createdAt": "2026-07-17T14:46:49.646Z"
+  },
+  {
+    "curriculum": [],
+    "id": "f29b633d-2df8-4386-af22-4b3e28f42105",
+    "title": "AWS Cloud Basics for Beginners",
+    "description": "An introduction to Amazon Web Services. Learn key services like EC2, S3, RDS, Lambda, and IAM.",
+    "category": "Development",
+    "coverImage": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=600&auto=format&fit=crop",
+    "instructor": "Manoj",
+    "duration": "16 Hours",
+    "level": "Beginner",
+    "language": "English",
+    "status": "Draft",
+    "createdAt": "2026-07-17T14:38:58.061Z"
+  },
+  {
+    "curriculum": [
+      {
+        "id": "mod-2-1",
+        "title": "Module 1: Variables and Basic Syntax",
+        "lessons": [
+          {
+            "id": "les-2-1-1",
+            "title": "Lesson 1.1: Syntax Basics",
+            "videoUrl": "https://www.youtube.com/watch?v=rfscVS0vtbw",
+            "videoType": "YouTube",
+            "videoDuration": "30 mins",
+            "description": "A quick overview of variables, arrays, lists, and dicts.",
+            "pdfFile": null,
+            "pptFile": null,
+            "docFile": null,
+            "zipFile": null,
+            "resources": []
+          }
+        ]
+      }
+    ],
+    "id": "c4cc9f00-d396-4e2f-aaf1-aab5815d23e6",
+    "title": "Python Masterclass: Zero to Hero",
+    "description": "Master Python programming from basics to decorators, generators, and FastAPI backend frameworks.",
+    "category": "Development",
+    "coverImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop",
+    "instructor": "Manoj",
+    "duration": "18 Hours",
+    "level": "Beginner",
+    "language": "English",
+    "status": "Published",
+    "createdAt": "2026-07-17T14:38:57.970Z"
+  },
+  {
+    "curriculum": [
+      {
+        "id": "mod-1",
+        "title": "Module 1: Getting Started with React",
+        "lessons": [
+          {
+            "id": "les-1-1",
+            "title": "Lesson 1.1: Introduction to JSX Markup",
+            "videoUrl": "https://www.youtube.com/watch?v=Dp1VjR1wWkU",
+            "videoType": "YouTube",
+            "videoDuration": "15 mins",
+            "description": "Learn the fundamentals of JSX, compiling HTML syntax elements in JS code.",
+            "pdfFile": {
+              "name": "jsx_syntax_handout.pdf",
+              "size": "1.2 MB",
+              "url": "http://localhost:5000/uploads/pdf/jsx_syntax_handout.pdf"
+            },
+            "pptFile": {
+              "name": "jsx_basics_deck.pptx",
+              "size": "3.4 MB",
+              "url": "http://localhost:5000/uploads/ppt/jsx_basics_deck.pptx"
+            },
+            "docFile": null,
+            "zipFile": null,
+            "resources": [
+              {
+                "id": "res-1-1-1",
+                "title": "React JSX Official Guidelines",
+                "url": "https://react.dev",
+                "type": "Documentation",
+                "description": "React documentation on writing markup"
+              }
+            ]
+          },
+          {
+            "id": "les-1-2",
+            "title": "Lesson 1.2: Component Lifecycle States",
+            "videoUrl": "https://www.w3schools.com/html/mov_bbb.mp4",
+            "videoType": "Animated Video",
+            "videoDuration": "25 mins",
+            "description": "Animated guide visualizing components mounting and unmounting workflows.",
+            "pdfFile": null,
+            "pptFile": null,
+            "docFile": null,
+            "zipFile": null,
+            "resources": []
+          }
+        ]
+      },
+      {
+        "id": "mod-2",
+        "title": "Module 2: Advanced State Management",
+        "lessons": [
+          {
+            "id": "les-2-1",
+            "title": "Lesson 2.1: Context API Setup",
+            "videoUrl": "https://www.w3schools.com/html/movie.mp4",
+            "videoType": "Pre-recorded Video",
+            "videoDuration": "45 mins",
+            "description": "Video session of Manoj coding context providers and consumer states.",
+            "pdfFile": {
+              "name": "context_api_cheat_sheet.pdf",
+              "size": "840 KB",
+              "url": "http://localhost:5000/uploads/pdf/context_api_cheat_sheet.pdf"
+            },
+            "pptFile": null,
+            "docFile": null,
+            "zipFile": null,
+            "resources": [
+              {
+                "id": "res-2-1-1",
+                "title": "GitHub State Context Demo",
+                "url": "https://github.com/facebook/react",
+                "type": "GitHub",
+                "description": "Source code setup"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "id": "a1dc22da-deb9-4d6d-a98a-816a89cb5d34",
+    "title": "React Development Masterclass",
+    "description": "Learn modern React including Hooks, Context API, Redux Toolkit, and performance optimizations. Build real-world projects.",
+    "category": "Development",
+    "coverImage": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=600&auto=format&fit=crop",
+    "instructor": "Manoj",
+    "duration": "24 Hours",
+    "level": "Intermediate",
+    "language": "English",
+    "status": "Published",
+    "createdAt": "2026-07-17T14:38:57.866Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a5620c5419084903493525a",
+    "title": "ai",
+    "description": "ai",
+    "category": "Computer Science",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:43:01.773Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a5620744190849034935247",
+    "title": "Dynamic E2E Test Course 1784029300458",
+    "description": "Generated by E2E test suite.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:41:40.477Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a56205d54c30eae8f9b3f63",
+    "title": "Dynamic E2E Test Course 1784029277503",
+    "description": "Generated by E2E test suite.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:41:17.513Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561fc146303285d34719ec",
+    "title": "Building Production AI Agent Systems",
+    "description": "Master prompting schemas, agent loops, cognitive tools, and execution routing for production AI.",
+    "category": "Computer Science",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:38:40.863Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561dbe54c30eae8f9b3f5e",
+    "title": "python",
+    "description": "python",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:30:06.271Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561c7154c30eae8f9b3f5b",
+    "title": "python",
+    "description": "python",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:24:33.903Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561c4e20aad7b6b5a60ef4",
+    "title": "Software Engineering Masterclass",
+    "description": "Specialized dynamic topics, layout rendering frameworks, and API gateway systems.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:23:58.588Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a944620fe9d2e669e5d",
+    "title": "python foundations",
+    "description": "details for varaibles",
+    "category": "Computer Science",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:16:36.240Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a39492a4f374e25db2e",
+    "title": "Artificial Intelligence & LLMs",
+    "description": "Explore cognitive prompting parameters, fine-tune models, and deploy RAG agents.",
+    "category": "Computer Science",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:15:05.081Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a35492a4f374e25db15",
+    "title": "TypeScript Mastery",
+    "description": "Understand structural typing systems, interfaces, utility generics, and strict configurations.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:15:01.998Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a33492a4f374e25dafc",
+    "title": "Git & GitHub Workflows",
+    "description": "Master branching models, merge conflicts resolution, rebase options, and action pipelines.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:14:59.137Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a30492a4f374e25dae3",
+    "title": "AWS Cloud Architecture",
+    "description": "Configure VPCs, load balancers, EC2 targets, Lambda scripts, and S3 assets.",
+    "category": "Cloud & DevOps",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:14:56.624Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a2e492a4f374e25daca",
+    "title": "Docker Containers",
+    "description": "Package software runtimes, build multi-stage Dockerfiles, and configure network links.",
+    "category": "Cloud & DevOps",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:14:54.062Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a2b492a4f374e25dab1",
+    "title": "PostgreSQL Databases",
+    "description": "Model relational schemas, write join statements, triggers, and optimize query engines.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:14:51.465Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a27492a4f374e25da98",
+    "title": "MongoDB Databases",
+    "description": "Design document schemas, construct aggregation pipelines, and tune query indexes.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:14:47.221Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a22492a4f374e25da7f",
+    "title": "Node.js Backend",
+    "description": "Build Express APIs, write validation middlewares, handle authentication, and query DBs.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:14:42.425Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a1e492a4f374e25da66",
+    "title": "React Fundamentals",
+    "description": "Understand virtual DOM, component lifecycles, state managers, and custom hooks.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:14:38.357Z"
+  },
+  {
+    "curriculum": [],
+    "id": "6a561a1a492a4f374e25da4d",
+    "title": "Python Fundamentals",
+    "description": "Master variables, control flow, functions, OOP, and script automations.",
+    "category": "Software Engineering",
+    "coverImage": null,
+    "instructor": null,
+    "duration": null,
+    "level": null,
+    "language": null,
+    "status": null,
+    "createdAt": "2026-07-14T11:14:34.213Z"
+  }
+]
